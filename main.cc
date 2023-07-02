@@ -23,15 +23,14 @@ int main(int argc, char** argv)
         filename = filename.substr(pos+1);
     }
 
-    setup();
-    prun();
-
     filename = output_path + filename;
     printf("\n\n");
-    printf("Writing to file:\n\t%s\n", filename.c_str());
+    printf("Will write to file:\n\t%s\nwhen done\n", filename.c_str());
     printf("\n\n");
-    TFile* file = TFile::Open(filename.c_str(), "RECREATE");
-    file->cd();
+    setup(filename);
+
+    prun();
+
     tree->Write();
     file->Write();
     file->Close();

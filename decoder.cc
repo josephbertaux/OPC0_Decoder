@@ -10,6 +10,7 @@ std::map<std::string, Int_t*> arr_type_branches =
     {"adc", nullptr},
 };
 
+TFile* file = nullptr;
 TTree* tree = nullptr;
 struct PerEventValues_s event_values = (struct PerEventValues_s){};
 struct PerHitValues_s hit_values = (struct PerHitValues_s){};
@@ -19,10 +20,17 @@ int pinit()
     return 0;
 }
 
-int setup()
+int setup(std::string const& filename)
 {
     event_values = (struct PerEventValues_s){};
     hit_values = (struct PerHitValues_s){};
+
+
+    if(!file)
+    {
+        TFile* file = TFile::Open(filename.c_str(), "RECREATE");
+    }
+    file->cd();
 
     if(!tree)
     {

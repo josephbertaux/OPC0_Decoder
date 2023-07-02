@@ -10,6 +10,7 @@
 #include <map>
 #include <string>
 
+#include <TFile.h>
 #include <TTree.h>
 
 struct PerEventValues_s
@@ -32,10 +33,11 @@ struct PerHitValues_s
 extern struct PerHitValues_s hit_values;
 extern std::map<std::string, Int_t*> arr_type_branches;
 
+extern TFile* file;
 extern TTree* tree;
 
 int pinit();
-int setup();
+int setup(std::string const&);
 int process_event(Event*);
 
 #endif//DECODER_H
