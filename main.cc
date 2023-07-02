@@ -6,7 +6,7 @@
 
 #include <TFile.h>
 
-std::string output_path = "/bbox/commissioning/INTT/hit_files/";
+std::string output_path = "/bbox/commissioning/INTT/josephb/";
 
 int main(int argc, char** argv)
 {
